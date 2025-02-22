@@ -14,4 +14,4 @@ export const assets = {
   parcel_icon,
 };
 
-export const url = "http:s//foodrush-backend";
+export const url = "https://foodrush-backend-gdyy";

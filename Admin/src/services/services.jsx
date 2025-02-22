@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "https://foodrush-backend",
+  baseURL: "https://foodrush-backend-gdyy",
 });
 
 export const addNewItemDataToDB = (formData) => {
