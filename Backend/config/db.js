@@ -2,8 +2,6 @@ import mongoose from "mongoose";
 
 export const connectDB = async () => {
   await mongoose
-    .connect(
-      "mongodb+srv://AsimMulla:ejf64f8wj29fuw8eo3cjid@cluster0.kkh7x.mongodb.net/FoodRush"
-    )
+    .connect(`${process.env.ATLAS_DB_URL}`)
     .then(() => console.log("DB Connected"));
 };
