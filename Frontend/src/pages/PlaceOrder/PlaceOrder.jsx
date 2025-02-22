@@ -3,7 +3,7 @@ const razorpayKey = import.meta.env.VITE_RAZORPAY_KEY_ID;
 import { toast } from "react-toastify";
 import { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "./placeOrder.css";
+import "./PlaceOrder.css";
 import {
   handlePaymentVerification,
   handlePlaceOrder,
