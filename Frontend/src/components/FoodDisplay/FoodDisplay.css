@@ -1,0 +1,24 @@
+.food-display {
+  margin: 2rem 0 4rem 0;
+}
+
+.food-display h2 {
+  text-align: center;
+  opacity: 0.9;
+  font-weight: 500;
+  margin-bottom: 2.5rem;
+}
+
+.food-display-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  margin-top: 2rem;
+  gap: 2rem;
+  row-gap: 2rem;
+}
+
+@media (max-width: 370px) {
+  .food-display {
+    margin-top: 1rem;
+  }
+}

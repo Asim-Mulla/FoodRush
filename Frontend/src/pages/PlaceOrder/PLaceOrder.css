@@ -1,0 +1,53 @@
+.place-order {
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  gap: 4rem;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+.place-order-left {
+  width: 100%;
+  max-width: max(30%, 500px);
+}
+
+.place-order-left .title {
+  text-align: center;
+  color: rgba(0, 0, 0, 0.8);
+  margin-bottom: 2rem;
+}
+
+.place-order-left input {
+  margin-bottom: 1rem;
+  width: 100%;
+  padding: 0.6rem;
+  border: 1px solid rgb(197, 197, 197);
+  border-radius: 0.5rem;
+  outline-color: rgb(232, 151, 99);
+}
+
+.place-order-left select {
+  margin-bottom: 1rem;
+  width: 100%;
+  padding: 0.6rem;
+  border: 1px solid rgb(197, 197, 197);
+  border-radius: 0.5rem;
+  outline-color: rgb(232, 151, 99);
+}
+
+.place-order-left .multi-fields {
+  display: flex;
+  gap: 1rem;
+}
+
+.place-order-right {
+  width: 100%;
+  max-width: max(40%, 500px);
+}
+
+@media (max-width: 600px) {
+  .place-order {
+    flex-direction: column;
+  }
+}

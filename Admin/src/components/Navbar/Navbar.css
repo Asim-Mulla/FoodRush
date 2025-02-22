@@ -1,0 +1,31 @@
+.navbar {
+  height: 5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 3rem 5%;
+}
+
+.navbar-logo-container {
+  width: 10rem;
+}
+
+.navbar-logo {
+  width: 100%;
+}
+
+.navbar-profile-container {
+  height: 3rem;
+  font-size: 3rem;
+  opacity: 0.7;
+}
+
+@media (max-width: 750px) {
+  .navbar-logo-container {
+    width: 8rem;
+  }
+  .navbar-profile-container {
+    height: 2rem;
+    font-size: 2rem;
+  }
+}

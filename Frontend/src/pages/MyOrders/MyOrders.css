@@ -1,0 +1,151 @@
+.my-orders {
+  margin: 1.5rem 0 2rem 0;
+}
+
+.my-orders h2 {
+  color: rgba(0, 0, 0, 0.8);
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.order-card {
+  border: 1.5px solid rgb(232, 151, 99);
+  border-radius: 1rem;
+  padding: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.order-info {
+  display: flex;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.order-icon {
+  height: 6rem;
+  width: 6rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #fff3eb;
+  padding: 1rem;
+  border-radius: 0.5rem;
+}
+
+.order-details {
+  font-size: 0.9rem;
+  color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.order-date {
+  font-size: 0.8rem;
+  color: rgba(0, 0, 0, 0.8);
+  margin-top: 0.5rem;
+}
+
+.order-status {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.price-info {
+  text-align: left;
+}
+
+.price {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+}
+
+.items-count {
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.status-info {
+  text-align: right;
+}
+
+.status {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.status-dot {
+  width: 8px;
+  height: 8px;
+  background-color: rgb(232, 151, 99);
+  border-radius: 50%;
+}
+
+.track-button {
+  color: rgb(0, 0, 0);
+  background-color: rgba(232, 151, 99, 0.5);
+  border: 2px solid rgb(232, 151, 99);
+  border-radius: 1rem;
+  padding: 0.5rem 1rem;
+  &:hover {
+    color: rgb(0, 0, 0);
+    border: 2px solid rgb(232, 151, 99);
+    background-color: rgba(232, 151, 99, 0.8);
+  }
+}
+
+.track-button:hover {
+  background-color: #ffe4d5;
+}
+
+/* Mobile responsive styles */
+@media (max-width: 480px) {
+  .order-details {
+    font-size: 0.9rem;
+  }
+
+  .order-icon {
+    height: 5rem;
+    width: 5rem;
+  }
+
+  .price {
+    font-size: 1rem;
+  }
+  .items-count {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 350px) {
+  .order-card {
+    padding: 1rem;
+  }
+
+  .order-info {
+    flex-direction: column;
+    gap: 1rem;
+    align-items: flex-start;
+  }
+
+  .order-status {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .status-info {
+    text-align: left;
+    width: 100%;
+  }
+
+  .track-button {
+    width: 100%;
+  }
+}

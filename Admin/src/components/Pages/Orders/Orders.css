@@ -1,0 +1,65 @@
+.order-item {
+  display: grid;
+  grid-template-columns: 0.5fr 2fr 1fr 1fr 1fr;
+  align-items: start;
+  gap: 1.5rem;
+  border: 1.5px solid rgb(232, 151, 99);
+  padding: 1rem;
+  margin: 1.5rem 0;
+  color: #505050;
+  border-radius: 1rem;
+}
+.order-item-food,
+.order-item-name {
+  font-weight: 600;
+}
+
+.order-item-name {
+  margin: 0.5rem 0;
+}
+
+.order-item-address {
+  margin-bottom: 0.5rem;
+}
+
+.order-item select {
+  background-color: #ffe8e4;
+  border: 1.5px solid rgb(232, 151, 99);
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  outline: none;
+}
+
+@media (max-width: 1000px) {
+  .order-item {
+    font-size: 12px;
+    grid-template-columns: 0.5fr 2fr 1fr;
+  }
+  .order-item select {
+    padding: 0.3rem;
+    font-size: 12px;
+  }
+  .order-item img {
+    width: 3rem;
+  }
+}
+
+@media (max-width: 450px) {
+  .order-item {
+    gap: 1rem;
+  }
+  .order-item img {
+    width: 2.5rem;
+  }
+}
+
+@media (max-width: 410px) {
+  .order-item {
+    grid-template-columns: 1fr 2fr;
+    gap: 0.5rem;
+    padding: 0.6rem;
+  }
+  .order-item select {
+    width: 100%;
+  }
+}
