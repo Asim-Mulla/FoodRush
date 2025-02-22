@@ -23,6 +23,6 @@ const foodSchema = new mongoose.Schema({
   },
 });
 
-const foodModel = mongoose.models.Food || mongoose.model("Food", foodSchema);
+const foodModel = mongoose.model("Food", foodSchema);
 
 export default foodModel;
