@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "https://foodrush-backend-gdyy",
+  baseURL: "https://foodsrush-backend",
 });
 
 export const loginOrSignup = (mainUrl, data) => {
