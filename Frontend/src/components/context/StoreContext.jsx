@@ -14,7 +14,7 @@ const StoreContextProvider = ({ children }) => {
   const [token, setToken] = useState("");
   const [food_list, setFoodList] = useState([]);
   const shippingCharge = 2;
-  const url = "https://foodrush-backend";
+  const url = "https://foodrush-backend-gdyy";
 
   const addToCart = async (itemId) => {
     if (!cartItems[itemId]) {
