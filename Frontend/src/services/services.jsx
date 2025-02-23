@@ -9,7 +9,6 @@ export const loginOrSignup = (mainUrl, data) => {
 };
 
 export const getFoodList = () => {
-  console.log("requesting backend for food_list in services.jsx");
   return api.get("/api/food/list");
 };
 

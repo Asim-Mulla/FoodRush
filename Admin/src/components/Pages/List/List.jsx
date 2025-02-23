@@ -5,7 +5,7 @@ import { toast } from "react-toastify";
 
 const List = () => {
   const [foodList, setFoodList] = useState([]);
-  const baseUrl = "https://foodsrush-backend";
+  const baseUrl = "https://foodsrush-backend.onrender.com";
 
   const fetchFoodList = async () => {
     const response = await getFoodList();

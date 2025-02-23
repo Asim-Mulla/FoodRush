@@ -14,7 +14,7 @@ const StoreContextProvider = ({ children }) => {
   const [token, setToken] = useState("");
   const [food_list, setFoodList] = useState([]);
   const shippingCharge = 2;
-  const url = "https://foodsrush-backend";
+  const url = "https://foodsrush-backend.onrender.com";
 
   const addToCart = async (itemId) => {
     if (!cartItems[itemId]) {
@@ -50,11 +50,9 @@ const StoreContextProvider = ({ children }) => {
   };
 
   const fetchFoodList = async () => {
-    console.log("Fetching food_list");
     try {
       const response = await getFoodList();
       setFoodList(response.data.data);
-      console.log("Successfully fetched food_list");
     } catch (error) {
       console.log(error);
       console.log("Error occurred while fetching the food data from the db");
