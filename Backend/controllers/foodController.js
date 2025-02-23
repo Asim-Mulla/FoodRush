@@ -45,8 +45,15 @@ const removeFood = async (req, res) => {
 
 // Get All Food Items
 const listFood = async (req, res) => {
+  console.log("inside backends controllers listFood function");
+
   try {
+    console.log("trying to find food in foodModel");
+
     const foods = await foodModel.find({});
+    console.log("after finding food");
+    console.log(foods);
+
     res.json({ success: true, data: foods });
   } catch (error) {
     console.log(error);

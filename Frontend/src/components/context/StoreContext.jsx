@@ -50,9 +50,11 @@ const StoreContextProvider = ({ children }) => {
   };
 
   const fetchFoodList = async () => {
+    console.log("Fetching food_list");
     try {
       const response = await getFoodList();
       setFoodList(response.data.data);
+      console.log("Successfully fetched food_list");
     } catch (error) {
       console.log(error);
       console.log("Error occurred while fetching the food data from the db");
