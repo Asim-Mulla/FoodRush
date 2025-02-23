@@ -4,7 +4,7 @@ import { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { assets } from "../../assets/assets";
 import { toast } from "react-toastify";
-import "./PlaceOrder.css";
+import "./PLaceOrder.css";
 //
 import {
   handlePaymentVerification,
