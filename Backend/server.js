@@ -2,9 +2,10 @@ import orderRouter from "./routes/orderRoute.js";
 import foodRouter from "./routes/foodRoute.js";
 import userRouter from "./routes/userRoute.js";
 import cartRouter from "./routes/cartRoute.js";
-import passport from "./config/auth.js";
-import session from "express-session";
 import { connectDB } from "./config/db.js";
+import passport from "./config/auth.js";
+import MongoStore from "connect-mongo";
+import session from "express-session";
 import express from "express";
 import cors from "cors";
 import "dotenv/config";
@@ -20,7 +21,11 @@ app.use(
   session({
     secret: process.env.SESSION_SECRET,
     resave: false,
-    saveUninitialized: true,
+    saveUninitialized: false,
+    store: MongoStore.create({
+      mongoUrl: process.env.ATLAS_DB_URL,
+      ttl: 7 * 24 * 60 * 60,
+    }),
   })
 );
 app.use(passport.initialize());
