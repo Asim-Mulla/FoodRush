@@ -2,10 +2,10 @@ import { useEffect, useState } from "react";
 import { getFoodList, removeFoodItem } from "../../../services/services";
 import "./List.css";
 import { toast } from "react-toastify";
+import { MdOutlineDelete } from "react-icons/md";
 
 const List = () => {
   const [foodList, setFoodList] = useState([]);
-  const baseUrl = "https://foodsrush-backend.onrender.com";
 
   const fetchFoodList = async () => {
     const response = await getFoodList();
@@ -44,12 +44,12 @@ const List = () => {
         {foodList.map((item, index) => {
           return (
             <div key={index} className="list-table-format">
-              <img src={`${baseUrl}/images/` + item.image} alt="" />
+              <img src={item.image.url} alt="" />
               <p>{item.name}</p>
               <p>{item.category}</p>
               <p>₹{item.price}</p>
               <p onClick={() => removeFood(item._id)} className="cursor">
-                X
+                <MdOutlineDelete />
               </p>
             </div>
           );

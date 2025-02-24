@@ -15,6 +15,7 @@ const StoreContextProvider = ({ children }) => {
   const [food_list, setFoodList] = useState([]);
   const shippingCharge = 2;
   const url = "https://foodsrush-backend.onrender.com";
+  // const url = "http://localhost:4000";
 
   const addToCart = async (itemId) => {
     if (!cartItems[itemId]) {

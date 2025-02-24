@@ -134,7 +134,7 @@ const PlaceOrder = () => {
   useEffect(() => {
     if (!token) {
       navigate("/cart");
-      // toast.info("You must be logged in.");
+      toast.info("You must be logged in.");
     } else if (cartTotal === 0) {
       navigate("/cart");
       toast.info("Your cart is empty.");

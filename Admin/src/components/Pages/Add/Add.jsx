@@ -23,6 +23,10 @@ const Add = () => {
   const handleFormSubmit = async (event) => {
     event.preventDefault();
 
+    if (!image) {
+      toast.error("Please upload an image.");
+    }
+
     const formData = new FormData();
     formData.append("name", data.name);
     formData.append("description", data.description);
@@ -30,19 +34,22 @@ const Add = () => {
     formData.append("category", data.category);
     formData.append("image", image);
 
-    const response = await addNewItemDataToDB(formData);
-    if (response.data.success) {
-      setImage(false);
-      setData({
-        name: "",
-        description: "",
-        category: "Salad",
-        price: "",
-      });
-      toast.success(response.data.message);
-    } else {
-      toast.error(response.data.message);
-    }
+    toast.promise(addNewItemDataToDB(formData), {
+      pending: "Adding item...",
+      success: {
+        render({ data }) {
+          setImage(false);
+          setData({
+            name: "",
+            description: "",
+            category: "Salad",
+            price: "",
+          });
+          return data?.data?.message || "Item added successfully!";
+        },
+      },
+      error: "Failed to add item. Please try again.",
+    });
   };
 
   return (

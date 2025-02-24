@@ -15,8 +15,8 @@ const Layout = () => {
         <ToastContainer />
         <Navbar showLogin={showLogin} setShowLogin={setShowLogin} />
         <Outlet />
-        <Footer />
       </section>
+      <Footer />
     </>
   );
 };

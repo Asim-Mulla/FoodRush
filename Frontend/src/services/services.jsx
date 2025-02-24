@@ -2,6 +2,7 @@ import axios from "axios";
 
 const api = axios.create({
   baseURL: "https://foodsrush-backend.onrender.com",
+  // baseURL: "http://localhost:4000",
 });
 
 export const loginOrSignup = (mainUrl, data) => {

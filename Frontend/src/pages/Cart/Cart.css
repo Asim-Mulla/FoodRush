@@ -5,7 +5,7 @@
 .cart h2 {
   text-align: center;
   color: rgba(0, 0, 0, 0.8);
-  margin-bottom: 2rem;
+  /* margin-bottom: 2rem; */
 }
 
 .cart-items-title {
@@ -44,6 +44,7 @@
 
 .remove-icon {
   cursor: pointer;
+  font-size: 1.5rem;
 }
 
 .cart-summary {
@@ -139,6 +140,10 @@
 @media (max-width: 600px) {
   .cart-items-item img {
     width: 5rem;
+  }
+  .remove-icon {
+    cursor: pointer;
+    font-size: 1.2rem;
   }
 }
 

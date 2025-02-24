@@ -1,9 +1,11 @@
+import { loginOrSignup } from "../../services/services";
+import { StoreContext } from "../context/StoreContext";
+import { GoogleLogin } from "@react-oauth/google";
 import { assets } from "../../assets/assets";
 import { useContext, useState } from "react";
-import "./Login.css";
-import { StoreContext } from "../context/StoreContext";
-import { loginOrSignup } from "../../services/services";
 import { toast } from "react-toastify";
+import axios from "axios";
+import "./Login.css";
 
 const Login = ({ setShowLogin }) => {
   const [currState, setCurrState] = useState("Sign up");
@@ -15,21 +17,13 @@ const Login = ({ setShowLogin }) => {
   });
 
   const handleInputChange = (event) => {
-    const name = event.target.name;
-    const value = event.target.value;
-
+    const { name, value } = event.target;
     setData((prev) => ({ ...prev, [name]: value }));
   };
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
-    let url = "";
-
-    if (currState === "Login") {
-      url += "/api/user/login";
-    } else {
-      url += "/api/user/signup";
-    }
+    let url = currState === "Login" ? "/api/user/login" : "/api/user/signup";
 
     const response = await loginOrSignup(url, data);
 
@@ -39,6 +33,28 @@ const Login = ({ setShowLogin }) => {
       setShowLogin(false);
     } else {
       toast.error(response.data.message);
+    }
+  };
+
+  const handleGoogleLogin = async (credentialResponse) => {
+    try {
+      const res = await axios.post(
+        "https://foodsrush.onrender.com/api/user/google",
+        {
+          token: credentialResponse.credential,
+        }
+      );
+
+      if (res.data.success) {
+        setToken(res.data.token);
+        localStorage.setItem("token", res.data.token);
+        setShowLogin(false);
+      } else {
+        toast.error("Google login failed!");
+      }
+    } catch (error) {
+      console.error("Google Login Error:", error);
+      toast.error("Google login failed!");
     }
   };
 
@@ -99,6 +115,11 @@ const Login = ({ setShowLogin }) => {
             <span onClick={() => setCurrState("Login")}>Login here</span>
           </p>
         )}
+        <p className="text-center">or</p>
+        <GoogleLogin
+          onSuccess={handleGoogleLogin}
+          onError={() => toast.error("Google Login Failed")}
+        />
       </form>
     </div>
   );
