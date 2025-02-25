@@ -119,6 +119,7 @@ const Login = ({ setShowLogin }) => {
         <GoogleLogin
           onSuccess={handleGoogleLogin}
           onError={() => toast.error("Google Login Failed")}
+          redirect_uri="https://foodsrush.onrender.com"
         />
       </form>
     </div>
