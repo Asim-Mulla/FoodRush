@@ -5,7 +5,7 @@ import { loginUser, signupUser } from "../controllers/userController.js";
 const userRouter = express.Router();
 
 // Google OAuth login
-userRouter.get(
+userRouter.post(
   "/google",
   passport.authenticate("google", { scope: ["profile", "email"] })
 );
