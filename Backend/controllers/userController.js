@@ -4,7 +4,7 @@ import bcrypt from "bcrypt";
 import validator from "validator";
 
 const createToken = (id) => {
-  return jwt.sign({ id }, process.env.JWT_SECRET);
+  return jwt.sign({ id }, process.env.JWT_SECRET, { expiresIn: "24h" });
 };
 
 // Login User

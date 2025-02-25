@@ -40,3 +40,7 @@ export const handlePaymentVerification = (razorpayData, orderData, token) => {
 export const getUserOrders = (token) => {
   return api.post("/api/order/orders", {}, { headers: { token } });
 };
+
+export const googleAuth = (code) => {
+  return api.get(`/auth/google?code=${code}`);
+};
