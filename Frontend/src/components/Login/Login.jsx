@@ -1,10 +1,10 @@
-import { loginOrSignup } from "../../services/services";
+import { googleAuth, loginOrSignup } from "../../services/services";
 import { StoreContext } from "../context/StoreContext";
-import { GoogleLogin } from "@react-oauth/google";
+import { useGoogleLogin } from "@react-oauth/google";
+import { FcGoogle } from "react-icons/fc";
 import { assets } from "../../assets/assets";
 import { useContext, useState } from "react";
 import { toast } from "react-toastify";
-import axios from "axios";
 import "./Login.css";
 
 const Login = ({ setShowLogin }) => {
@@ -36,27 +36,31 @@ const Login = ({ setShowLogin }) => {
     }
   };
 
-  const handleGoogleLogin = async (credentialResponse) => {
+  const responseGoogle = async (authResult) => {
     try {
-      const res = await axios.post(
-        "https://foodsrush.onrender.com/api/user/google",
-        {
-          token: credentialResponse.credential,
-        }
-      );
+      const code = authResult["code"];
 
-      if (res.data.success) {
-        setToken(res.data.token);
-        localStorage.setItem("token", res.data.token);
-        setShowLogin(false);
-      } else {
-        toast.error("Google login failed!");
+      if (code) {
+        const res = await googleAuth(code);
+
+        if (res.data.success) {
+          setToken(res.data.token);
+          localStorage.setItem("token", res.data.token);
+          setShowLogin(false);
+        } else {
+          toast.error(res.data.message);
+        }
       }
     } catch (error) {
-      console.error("Google Login Error:", error);
-      toast.error("Google login failed!");
+      console.error("Error while requesting google code : ", error);
     }
   };
+
+  const handleGoogleLogin = useGoogleLogin({
+    onSuccess: responseGoogle,
+    onError: responseGoogle,
+    flow: "auth-code",
+  });
 
   return (
     <div className="login-popup">
@@ -95,15 +99,19 @@ const Login = ({ setShowLogin }) => {
             required
           />
         </div>
-        <button type="submit">
-          {currState === "Sign up" ? "Create Account" : "Login"}
-        </button>
         <div className="login-popup-privacy-check">
-          <input type="checkbox" id="privacy-check" required />
           <label htmlFor="privacy-check">
-            By continuing, I agree to terms of use and privacy policy.
+            By continuing, You agree to terms of use and privacy policy.
           </label>
         </div>
+        <button type="submit" className="submitBtn">
+          {currState === "Sign up" ? "Create Account" : "Login"}
+        </button>
+        <p className="text-center m-0">or</p>
+        <button class="googleBtn" onClick={handleGoogleLogin}>
+          <FcGoogle className="fs-4" />
+          Continue with Google
+        </button>
         {currState === "Login" ? (
           <p>
             Create a new account?{" "}
@@ -115,11 +123,6 @@ const Login = ({ setShowLogin }) => {
             <span onClick={() => setCurrState("Login")}>Login here</span>
           </p>
         )}
-        <p className="text-center">or</p>
-        <GoogleLogin
-          onSuccess={handleGoogleLogin}
-          onError={() => toast.error("Google Login Failed")}
-        />
       </form>
     </div>
   );

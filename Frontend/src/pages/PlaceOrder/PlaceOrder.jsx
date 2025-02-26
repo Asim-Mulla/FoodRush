@@ -115,9 +115,6 @@ const PlaceOrder = () => {
             email: `${shippingData.email}`,
             contact: shippingData.phone,
           },
-          // theme: {
-          //   color: "#e89763",
-          // },
         };
 
         const razor = new window.Razorpay(options);
